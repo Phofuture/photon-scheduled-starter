@@ -1,8 +1,8 @@
 package scheduleStarter
 
 import (
-	"github.com/dennesshen/photon-core-starter/core"
-	"github.com/dennesshen/photon-scheduled-starter/schedule"
+	"github.com/Phofuture/photon-core-starter/core"
+	"github.com/Phofuture/photon-scheduled-starter/schedule"
 )
 
 func init() {
