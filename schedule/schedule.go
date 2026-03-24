@@ -13,7 +13,12 @@ var cronServer *cron.Cron
 func Start(ctx context.Context) error {
 	log.Logger().Info(ctx, "Start cron server")
 
-	cronServer = cron.New()
+	cronServer = cron.New(
+		cron.WithParser(cron.NewParser(
+			cron.SecondOptional | cron.Minute | cron.Hour | cron.Dom | cron.Month | cron.Dow | cron.Descriptor,
+		)),
+		cron.WithChain(cron.SkipIfStillRunning(cron.DefaultLogger)),
+	)
 	for _, commandStruct := range cronCommandStructLists {
 
 		commandStructType := reflect.TypeOf(commandStruct).Elem()
